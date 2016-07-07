@@ -7,7 +7,16 @@ Deploy [jenkins-ghp](https://github.com/novafloss/jenkins-ghp).
 Requirements
 ------------
 
-None.
+pip and systemd.
+
+
+Warning :bangbang:
+------------------
+
+**Installing GHP will breaks pip version 1.5!** This is due to API break in
+requests. Please upgrade pip carefully before running this role. Use
+[FGtatsuro.python-requirements](https://galaxy.ansible.com/FGtatsuro/python-requirements/)
+to upgrade pip with ansible.
 
 
 Role Variables
@@ -33,6 +42,7 @@ host.
 
     - hosts: jenkins-master
       roles:
+         - FGtatsuro.python-requirements
          - role: novafloss.jenkins-ghp
            jenkins_ghp_vars:
              GHP_JOBS_CREDENTIALS: github-clone-token
