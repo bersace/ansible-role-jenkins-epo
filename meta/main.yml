@@ -5,11 +5,11 @@ galaxy_info:
   license: BSD
   min_ansible_version: 2.0
 
-  plateform:
+  plateforms:
   - name: Debian
     versions:
     - jessie
 
-  galaxy_tags: [bot, ci, jenkins, jenkins-ghp, github]
+  galaxy_tags: [bot, ci, jenkins, ghp, github]
 
 dependencies: []
