@@ -1,5 +1,5 @@
 ---
-jenkins_ghp_envvars: {}
-jenkins_ghp_username: jenkins
-jenkins_ghp_workdir: /var/lib/jenkins/ghp
-jenkins_ghp_loop: 20
+jenkins_epo_envvars: {}
+jenkins_epo_username: jenkins
+jenkins_epo_workdir: /var/lib/jenkins/epo
+jenkins_epo_loop: 20
