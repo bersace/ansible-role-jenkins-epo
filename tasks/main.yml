@@ -1,4 +1,10 @@
 ---
+- name: check ghp
+  become: yes
+  shell: systemctl list-units --all jenkins-ghp| grep -q jenkins-ghp
+  register: ghp
+  ignore_errors: true
+
 - name: install epo
   become: yes
   pip:
@@ -43,6 +49,7 @@
   shell: systemctl daemon-reload
 
 - name: disable ghp
+  when: ghp|succeeded
   service:
     name: jenkins-ghp
     enabled: false
@@ -60,3 +67,16 @@
   service:
     name: jenkins-epo
     state: started
+
+- name: uninstall ghp
+  become: yes
+  pip:
+    executable: pip3
+    name: jenkins-ghp
+    state: absent
+  register: uninstall_ghp
+
+- name: reload systemd
+  when: uninstall_ghp|changed
+  become: yes
+  shell: systemctl daemon-reload
