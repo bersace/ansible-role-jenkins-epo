@@ -1,19 +1,19 @@
-jenkins-ghp
+jenkins-epo
 ===========
 
-Deploy [jenkins-ghp](https://github.com/novafloss/jenkins-ghp).
+Deploy [jenkins-epo](https://github.com/novafloss/jenkins-epo).
 
 
 Requirements
 ------------
 
-pip and systemd.
+python3, pip and systemd.
 
 
 Warning :bangbang:
 ------------------
 
-**Installing GHP will breaks pip version 1.5!** This is due to API break in
+**Installing EPO will breaks pip version 1.5!** This is due to API break in
 requests. Please upgrade pip carefully before running this role. Use
 [FGtatsuro.python-requirements](https://galaxy.ansible.com/FGtatsuro/python-requirements/)
 to upgrade pip with ansible.
@@ -22,10 +22,10 @@ to upgrade pip with ansible.
 Role Variables
 --------------
 
-    jenkins_ghp_envvars:
-      GHP_REPOSITORIES: owner/repository1 owner/repository2
-    jenkins_ghp_username: jenkins
-    jenkins_ghp_workdir: /var/lib/jenkins/ghp
+    jenkins_epo_envvars:
+      REPOSITORIES: owner/repository1 owner/repository2
+    jenkins_epo_username: jenkins
+    jenkins_epo_workdir: /var/lib/jenkins/epo
 
 
 Dependencies
@@ -37,16 +37,16 @@ None :)
 Example Playbook
 ----------------
 
-You can deploy jenkins-ghp either on Jenkins master host or on a dedicated
+You can deploy jenkins-epo either on Jenkins master host or on a dedicated
 host.
 
     - hosts: jenkins-master
       roles:
          - FGtatsuro.python-requirements
-         - role: novafloss.jenkins-ghp
-           jenkins_ghp_vars:
-             GHP_JOBS_CREDENTIALS: github-clone-token
-             GHP_REPOSITORIES: mycompany/repository1 mycompany/repository2
+         - role: novafloss.jenkins-epo
+           jenkins_epo_vars:
+             JOBS_CREDENTIALS: github-clone-token
+             REPOSITORIES: mycompany/repository1 mycompany/repository2
              GITHUB_TOKEN: deadc0ffee00deadbeef00..
              JENKINS_URL: https://jenkins.mycompany.com
 
@@ -60,4 +60,4 @@ BSD
 Author Information
 ------------------
 
-Étienne BERSAC <@bersace>, @PeopleDoc.
+Étienne BERSAC <@bersace>.
