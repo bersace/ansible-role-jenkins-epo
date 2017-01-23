@@ -43,8 +43,8 @@ host.
     - hosts: jenkins-master
       roles:
          - FGtatsuro.python-requirements
-         - role: novafloss.jenkins-epo
-           jenkins_epo_vars:
+         - role: bersace.jenkins-epo
+           jenkins_epo_envvars:
              JOBS_CREDENTIALS: github-clone-token
              REPOSITORIES: mycompany/repository1 mycompany/repository2
              GITHUB_TOKEN: deadc0ffee00deadbeef00..
